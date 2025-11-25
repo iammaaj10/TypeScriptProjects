@@ -1,9 +1,6 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 
-// Simple ToDo app in a single file (TypeScript + React + TailwindCSS)
-// Default export: TodoApp component
 
-// -------------------- Types --------------------
 type Todo = {
   id: string;
   text: string;
@@ -25,7 +22,7 @@ type Action =
   | { type: "setFilter"; payload: { filter: State["filter"] } }
   | { type: "setTodos"; payload: { todos: Todo[] } };
 
-// -------------------- Reducer --------------------
+
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "add": {
@@ -68,7 +65,7 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-// -------------------- Local Storage helpers --------------------
+
 const LS_KEY = "todos_v1";
 function loadTodosFromLocalStorage(): Todo[] {
   try {
@@ -91,7 +88,7 @@ function saveTodosToLocalStorage(todos: Todo[]) {
   }
 }
 
-// -------------------- Components --------------------
+
 
 function TodoItem({
   todo,
@@ -173,7 +170,7 @@ function TodoItem({
   );
 }
 
-// -------------------- Main App --------------------
+
 export default function TodoApp(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, {
     todos: [],
